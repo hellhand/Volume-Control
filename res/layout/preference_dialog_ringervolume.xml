@@ -14,104 +14,110 @@
      limitations under the License.
 -->
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-        
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_horizontal">
-                
-	    <ImageView
-	        android:src="@android:drawable/divider_horizontal_dim_dark"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content" />
-                
-        <!-- Used for the ring volume.-->
-        <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/incoming_call_volume_title"
-                android:paddingTop="10dip"
-                android:paddingLeft="20dip" 
-                android:paddingRight="20dip" />
-        <SeekBar android:id="@+id/incoming_call_volume_seekbar"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="2dip"
-                android:paddingLeft="20dip" 
-                android:paddingRight="20dip" />
-            
-        <!-- Used for the media volume -->
-        <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/media_volume_title"
-                android:paddingTop="10dip"
-                android:paddingLeft="20dip" 
-                android:paddingRight="20dip" />
-        <SeekBar android:id="@+id/media_volume_seekbar"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="2dip"
-                android:paddingLeft="20dip"
-                android:paddingRight="20dip" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
-        <!-- Used for the alarm volume -->
-        <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/system_volume_title"
-                android:paddingTop="10dip"
-                android:paddingLeft="20dip" 
-                android:paddingRight="20dip" />
-        <SeekBar android:id="@+id/alarm_volume_seekbar"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="2dip"
-                android:paddingLeft="20dip" 
-                android:paddingRight="20dip" />
-    
-        <TextView android:id="@+id/notification_volume_title"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/notification_volume_title"
-                android:paddingTop="6dip"
-                android:paddingLeft="20dip" 
-                android:paddingRight="20dip" />
-        
-        <!-- Used for the notification volume -->
-        <SeekBar android:id="@+id/notification_volume_seekbar"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="2dip"
-                android:paddingLeft="20dip" 
-                android:paddingRight="20dip" />
-        
-        <TableRow android:id="@+id/tableRow"
-                android:layout_height="wrap_content" 
-                android:layout_width="fill_parent" 
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="25dip"
-                android:background="#ffa0a0a0">
-            
-            <Button android:id="@+id/buttonOK" 
-                    android:text="@android:string/ok"
-                    android:layout_width="fill_parent" 
-                    android:layout_height="wrap_content" 
-                    android:layout_marginTop="5dip"
-                    android:layout_weight="1"/>
-            
-            <Button android:id="@+id/buttonCancel" 
-                    android:text="@android:string/cancel"
-                    android:layout_width="fill_parent" 
-                    android:layout_height="wrap_content" 
-                    android:layout_marginTop="5dip"
-                    android:layout_weight="1"/>
-        
-        </TableRow>
-        
-    </LinearLayout>
-</ScrollView>
+    <ImageView
+        android:src="@android:drawable/divider_horizontal_dim_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+	<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content">
+	        
+	    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="vertical"
+	            android:gravity="center_horizontal">
+	                
+	        <!-- Used for the ring volume.-->
+	        <TextView
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:text="@string/incoming_call_volume_title"
+	                android:paddingTop="10dip"
+	                android:paddingLeft="20dip" 
+	                android:paddingRight="20dip" />
+	        <SeekBar android:id="@+id/incoming_call_volume_seekbar"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:paddingTop="2dip"
+	                android:paddingLeft="20dip" 
+	                android:paddingRight="20dip" />
+	            
+	        <!-- Used for the media volume -->
+	        <TextView
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:text="@string/media_volume_title"
+	                android:paddingTop="10dip"
+	                android:paddingLeft="20dip" 
+	                android:paddingRight="20dip" />
+	        <SeekBar android:id="@+id/media_volume_seekbar"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:paddingTop="2dip"
+	                android:paddingLeft="20dip"
+	                android:paddingRight="20dip" />
+	
+	        <!-- Used for the alarm volume -->
+	        <TextView
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:text="@string/system_volume_title"
+	                android:paddingTop="10dip"
+	                android:paddingLeft="20dip" 
+	                android:paddingRight="20dip" />
+	        <SeekBar android:id="@+id/alarm_volume_seekbar"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:paddingTop="2dip"
+	                android:paddingLeft="20dip" 
+	                android:paddingRight="20dip" />
+	    
+	        <TextView android:id="@+id/notification_volume_title"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:text="@string/notification_volume_title"
+	                android:paddingTop="6dip"
+	                android:paddingLeft="20dip" 
+	                android:paddingRight="20dip" />
+	        
+	        <!-- Used for the notification volume -->
+	        <SeekBar android:id="@+id/notification_volume_seekbar"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:paddingTop="2dip"
+	                android:paddingLeft="20dip" 
+	                android:paddingRight="20dip" />
+	        
+	        <TableRow android:id="@+id/tableRow"
+	                android:layout_height="wrap_content" 
+	                android:layout_width="fill_parent" 
+	                android:layout_marginTop="25dip"
+	                android:background="#ffa0a0a0">
+	            
+	            <Button android:id="@+id/buttonOK" 
+	                    android:text="@android:string/ok"
+	                    android:layout_width="fill_parent" 
+	                    android:layout_height="wrap_content" 
+	                    android:layout_marginTop="5dip"
+	                    android:layout_weight="1"/>
+	            
+	            <Button android:id="@+id/buttonCancel" 
+	                    android:text="@android:string/cancel"
+	                    android:layout_width="fill_parent" 
+	                    android:layout_height="wrap_content" 
+	                    android:layout_marginTop="5dip"
+	                    android:layout_weight="1"/>
+	        
+	        </TableRow>
+	        
+	    </LinearLayout>
+	</ScrollView>
+</LinearLayout>
