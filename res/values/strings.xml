@@ -18,5 +18,6 @@
     <string name="media_volume_title">Media</string>
     <!-- Sound settings screen, alarm volume slider title -->
     <string name="system_volume_title">System</string>
-
+    <!-- Sound settings screen, mute checkbox title -->
+    <string name="mute_volume_tilte">Mute</string>
 </resources>

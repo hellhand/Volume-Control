@@ -43,6 +43,7 @@
 	                android:paddingTop="10dip"
 	                android:paddingLeft="20dip" 
 	                android:paddingRight="20dip" />
+	                
 	        <SeekBar android:id="@+id/incoming_call_volume_seekbar"
 	                android:layout_width="fill_parent"
 	                android:layout_height="wrap_content"
@@ -58,6 +59,7 @@
 	                android:paddingTop="10dip"
 	                android:paddingLeft="20dip" 
 	                android:paddingRight="20dip" />
+	                
 	        <SeekBar android:id="@+id/media_volume_seekbar"
 	                android:layout_width="fill_parent"
 	                android:layout_height="wrap_content"
@@ -73,13 +75,15 @@
 	                android:paddingTop="10dip"
 	                android:paddingLeft="20dip" 
 	                android:paddingRight="20dip" />
+	                
 	        <SeekBar android:id="@+id/alarm_volume_seekbar"
 	                android:layout_width="fill_parent"
 	                android:layout_height="wrap_content"
 	                android:paddingTop="2dip"
 	                android:paddingLeft="20dip" 
 	                android:paddingRight="20dip" />
-	    
+
+            <!-- Used for the notification volume -->	    
 	        <TextView android:id="@+id/notification_volume_title"
 	                android:layout_width="fill_parent"
 	                android:layout_height="wrap_content"
@@ -88,13 +92,21 @@
 	                android:paddingLeft="20dip" 
 	                android:paddingRight="20dip" />
 	        
-	        <!-- Used for the notification volume -->
 	        <SeekBar android:id="@+id/notification_volume_seekbar"
 	                android:layout_width="fill_parent"
 	                android:layout_height="wrap_content"
 	                android:paddingTop="2dip"
 	                android:paddingLeft="20dip" 
 	                android:paddingRight="20dip" />
+	        
+            <!-- Used for un/mute -->
+	        <CheckBox android:id="@+id/mute_volume_checkbox"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="2dip"
+                    android:paddingLeft="60dip" 
+                    android:paddingRight="40dip"
+                    android:text="@string/mute_volume_tilte"/>
 	        
 	        <TableRow android:id="@+id/tableRow"
 	                android:layout_height="wrap_content" 

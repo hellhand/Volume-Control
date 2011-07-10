@@ -15,13 +15,14 @@ public final class R {
     }
     public static final class id {
         public static final int alarm_volume_seekbar=0x7f050002;
-        public static final int buttonCancel=0x7f050007;
-        public static final int buttonOK=0x7f050006;
+        public static final int buttonCancel=0x7f050008;
+        public static final int buttonOK=0x7f050007;
         public static final int incoming_call_volume_seekbar=0x7f050000;
         public static final int media_volume_seekbar=0x7f050001;
+        public static final int mute_volume_checkbox=0x7f050005;
         public static final int notification_volume_seekbar=0x7f050004;
         public static final int notification_volume_title=0x7f050003;
-        public static final int tableRow=0x7f050005;
+        public static final int tableRow=0x7f050006;
     }
     public static final class layout {
         public static final int main=0x7f030000;
@@ -35,6 +36,9 @@ public final class R {
         /**  Sound settings screen, setting option name 
          */
         public static final int media_volume_title=0x7f040007;
+        /**  Sound settings screen, mute checkbox title 
+         */
+        public static final int mute_volume_tilte=0x7f040009;
         /**  Sound settings screen, the title of the volume bar to adjust the notification volume 
          */
         public static final int notification_volume_title=0x7f040006;

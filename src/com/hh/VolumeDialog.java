@@ -17,6 +17,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
@@ -33,8 +36,15 @@ public class VolumeDialog extends Dialog implements OnClickListener, DialogInter
         AudioManager.STREAM_RING,
         AudioManager.STREAM_NOTIFICATION,
         AudioManager.STREAM_MUSIC,
-        AudioManager.STREAM_SYSTEM
+        AudioManager.STREAM_SYSTEM,
     };
+    
+    private CheckBoxRinger mcheckBoxMuter;
+    private static final int[] CHECKBOX_TYPE = new int[] {
+        AudioManager.RINGER_MODE_VIBRATE,
+        AudioManager.RINGER_MODE_NORMAL
+    };
+    
     private Context mContext;
     private Button mButtonOK;
     private Button mButtonCancel;
@@ -68,6 +78,9 @@ public class VolumeDialog extends Dialog implements OnClickListener, DialogInter
             mSeekBarVolumizer[i] = new SeekBarVolumizer(mContext, seekBar,
                 SEEKBAR_TYPE[i]);
         }
+        CheckBox checkBox = (CheckBox) findViewById(R.id.mute_volume_checkbox);
+        Log.d(getClass().toString(), checkBox.toString());
+        mcheckBoxMuter = new CheckBoxRinger(mContext, checkBox);
     }
 
     @Override
@@ -96,6 +109,7 @@ public class VolumeDialog extends Dialog implements OnClickListener, DialogInter
         for (SeekBarVolumizer vol : mSeekBarVolumizer) {
             vol.revertVolume();
         }
+        mcheckBoxMuter.revertMute();
     }
     
     private void closeVolumes() {
@@ -107,6 +121,71 @@ public class VolumeDialog extends Dialog implements OnClickListener, DialogInter
     protected void onSampleStarting(SeekBarVolumizer volumizer) {
         for (SeekBarVolumizer vol : mSeekBarVolumizer) {
             if (vol != null && vol != volumizer) vol.stopSample();
+        }
+    }
+    
+    public class CheckBoxRinger implements OnCheckedChangeListener, Runnable {
+
+        private Context mContext;
+        private Handler mHandler = new Handler();
+    
+        private AudioManager mAudioManager;
+        
+        private int mOriginalRingerStatus; 
+    
+        private boolean mLastRinger;
+        private CheckBox mCheckBox;
+        
+        private ContentObserver mRingerObserver = new ContentObserver(mHandler) {
+            @Override
+            public void onChange(boolean selfChange) {
+                super.onChange(selfChange);
+                if (mCheckBox != null) {
+                    int silentModeStreams = Settings.System.getInt(mContext.getContentResolver(),
+                            Settings.System.MODE_RINGER, 0);
+                    mCheckBox.setChecked((silentModeStreams == CHECKBOX_TYPE[0]) ? true : false);
+                }
+            }
+        };
+        
+        public CheckBoxRinger(Context context, CheckBox checkBox) {
+            mContext = context;
+            mAudioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+            mCheckBox = checkBox;
+            
+            initCheckBox(checkBox);
+        }
+        
+        public void revertMute() {
+            mAudioManager.setRingerMode(mOriginalRingerStatus);
+        }
+
+        private void initCheckBox(CheckBox checkBox) {
+            
+            mOriginalRingerStatus = mAudioManager.getRingerMode();
+            mCheckBox.setChecked((mOriginalRingerStatus == CHECKBOX_TYPE[0]) ? true : false);
+            mCheckBox.setOnCheckedChangeListener(this);
+            
+            mContext.getContentResolver().registerContentObserver(
+                    Settings.System.getUriFor(Settings.System.MODE_RINGER),
+                    false, mRingerObserver);
+        }
+
+        @Override
+        public void run() {
+            mAudioManager.setRingerMode((mLastRinger) ? 1 : 2);
+        }
+
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView,
+                boolean isChecked) {
+            postSetVolume(isChecked);
+        }
+
+        void postSetVolume(boolean isChecked) {
+            mLastRinger = isChecked;
+            mHandler.removeCallbacks(this);
+            mHandler.post(this);
         }
     }
     
